@@ -10,7 +10,7 @@ export const home = (req: Request, res: Response) => {
     data: "hello from express js"
   };
 
-  res.status(200).json(apiRes).end();
+  res.status(StatusCodes.OK).json(apiRes).end();
 };
 
 export const posts = (req: Request, res: Response) => {
