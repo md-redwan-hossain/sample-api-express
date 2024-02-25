@@ -1,0 +1,16 @@
+version: "3"
+services:
+  app:
+    env_file:
+      - .env
+    build:
+      context: .
+      network: host
+    ports:
+      - "8005:8000"
+    volumes:
+      - "app_data:/node-app"
+    command: [ "node", "./dist/app.js" ]
+
+volumes:
+  app_data:
