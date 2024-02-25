@@ -13,7 +13,7 @@ export const home = (req: Request, res: Response) => {
   res.status(StatusCodes.OK).json(apiRes).end();
 };
 
-export const posts = (req: Request, res: Response) => {
+export const post = (req: Request, res: Response) => {
   const id: string = req.params["id"];
 
   const data$ = apiCall(parseInt(id));
@@ -25,4 +25,15 @@ export const posts = (req: Request, res: Response) => {
         .end(),
     error: (err: Error) => console.error(`${err.name}: ${err.message}`)
   });
+};
+
+export const notFound = (req: Request, res: Response) => {
+  const apiRes: ApiResponse<null> = {
+    success: false,
+    code: StatusCodes.NOT_FOUND,
+    message: getReasonPhrase(StatusCodes.NOT_FOUND),
+    data: null
+  };
+
+  res.status(StatusCodes.NOT_FOUND).json(apiRes).end();
 };
